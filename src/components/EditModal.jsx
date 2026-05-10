@@ -12,6 +12,7 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 // import { revalidatePath } from "next/cache";
 
 import { FiEdit } from "react-icons/fi";
@@ -44,6 +45,7 @@ export function EditModal({ destination }) {
     const data = await res.json();
 
     // revalidatePath(`/destinations/${_id}`);
+    redirect(`/destinations/${_id}`);
 
     return data;
   };
