@@ -4,6 +4,7 @@ import { LuMapPin } from "react-icons/lu";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import Link from "next/link";
+import { EditModal } from "@/components/EditModal";
 
 const DestinationDetails = async ({ params }) => {
   const { id } = await params;
@@ -34,9 +35,8 @@ const DestinationDetails = async ({ params }) => {
 
         {/* edit and cancel buttons */}
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 px-4 py-2 border rounded-md hover:bg-gray-50">
-            <FiEdit /> Edit
-          </button>
+          <EditModal destination={destination} />
+
           <button className="flex items-center gap-2 px-4 py-2 border border-red-200 text-red-500 rounded-md hover:bg-red-50">
             <FiTrash2 /> Cancel
           </button>
