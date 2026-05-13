@@ -18,7 +18,7 @@ const SignUpPage = () => {
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
 
-    const { data, error } = await authClient.signIn.email({
+    const { data, error } = await authClient.signUp.email({
       email: user.email,
       password: user.password,
       name: user.name,
@@ -26,7 +26,6 @@ const SignUpPage = () => {
       callbackURL: "/login",
     });
 
-    console.log(data, error);
     if (data) {
       redirect("/login");
     }
@@ -36,8 +35,8 @@ const SignUpPage = () => {
   };
   return (
     <div className="mx-auto p-8 m-10 shadow-md border bg-white rounded-xl flex flex-col items-center gap-4">
-      <h1 className="text-2xl font-bold ">Login</h1>{" "}
-      <p className="text-gray-600 mb-4 ">login with your email and password</p>
+      <h1 className="text-2xl font-bold ">Signup</h1>{" "}
+      <p className="text-gray-600 mb-4 ">signup with your information</p>
       <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
         <TextField isRequired name="name" type="text">
           <Label>Name</Label>

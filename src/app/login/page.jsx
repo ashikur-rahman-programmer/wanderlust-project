@@ -25,13 +25,19 @@ const LoginPage = () => {
       callbackURL: "/",
     });
 
-    console.log(data, error);
     if (data) {
       redirect("/");
     }
     if (error) {
       alert(error.message);
     }
+  };
+
+  const handleGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
   };
   return (
     <div className="mx-auto p-8 m-10 shadow-md border bg-white rounded-xl flex flex-col items-center gap-4">
@@ -90,7 +96,11 @@ const LoginPage = () => {
       </Form>
       <div className="w-full">
         <p className="text-center mb-4 border-b border-b-gray-200">or</p>
-        <Button className="w-full" variant="tertiary">
+        <Button
+          onClick={handleGoogleLogin}
+          className="w-full"
+          variant="tertiary"
+        >
           <Icon icon="devicon:google" />
           Sign in with Google
         </Button>
