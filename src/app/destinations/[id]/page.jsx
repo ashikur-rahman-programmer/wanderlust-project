@@ -6,6 +6,7 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import Link from "next/link";
 import { EditModal } from "@/components/EditModal";
 import { AlertDialogCard } from "@/components/AlertDialogCard";
+import BookingPage from "@/components/Booking";
 
 const DestinationDetails = async ({ params }) => {
   const { id } = await params;
@@ -108,41 +109,7 @@ const DestinationDetails = async ({ params }) => {
 
         {/* Right Column: Booking Sidebar */}
         <div className="lg:col-span-1">
-          <div className="border border-gray-100 rounded-xl p-8 shadow-sm sticky top-10">
-            <div className="mb-6">
-              <p className="text-gray-500 text-sm">Starting from</p>
-              <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-bold text-cyan-500">
-                  ${price}
-                </span>
-                <span className="text-gray-500 text-sm">per person</span>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div className="bg-gray-50 p-4 rounded-md text-gray-700 font-medium border border-gray-100">
-                {departureDate || "05/15/2026"}
-              </div>
-              <button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 rounded-md transition duration-300 flex items-center justify-center gap-2">
-                Book Now <span>→</span>
-              </button>
-            </div>
-
-            <div className="mt-6 space-y-3">
-              {[
-                "Free cancellation up to 7 days",
-                "Travel insurance included",
-                "24/7 customer support",
-              ].map((text, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 text-sm text-gray-500"
-                >
-                  <FaCheck className="text-green-500" /> {text}
-                </div>
-              ))}
-            </div>
-          </div>
+          <BookingPage destination={destination} />
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import {
   Button,
   Card,
 } from "@heroui/react";
+import Link from "next/link";
 
 const AddDestinationPage = () => {
   const onSubmit = async (e) => {
@@ -150,14 +151,15 @@ const AddDestinationPage = () => {
           </div>
 
           {/* Buttons */}
-
-          <Button
-            type="submit"
-            variant="outline"
-            className=" rounded-none w-full bg-cyan-500 text-white"
-          >
-            Add Destination
-          </Button>
+          <Link href="/destinations">
+            <Button
+              type="submit"
+              variant="outline"
+              className=" rounded-none w-full bg-cyan-500 text-white"
+            >
+              Add Destination
+            </Button>
+          </Link>
         </form>
       </Card>
     </div>
