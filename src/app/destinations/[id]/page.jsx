@@ -2,27 +2,26 @@ import Image from "next/image";
 import { FaRegCalendar, FaStar, FaCheck } from "react-icons/fa6";
 import { LuMapPin } from "react-icons/lu";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { FiEdit, FiTrash2 } from "react-icons/fi";
 import Link from "next/link";
 import { EditModal } from "@/components/EditModal";
 import { AlertDialogCard } from "@/components/AlertDialogCard";
 import BookingPage from "@/components/Booking";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const DestinationDetails = async ({ params }) => {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/destination/${id}`);
+  const { token } = await auth.api.getToken({ headers: await headers() });
+  const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const destination = await res.json();
 
-  const {
-    destinationName,
-    country,
-    price,
-    imageUrl,
-    duration,
-    description,
-    departureDate,
-  } = destination;
+  const { destinationName, country, price, imageUrl, duration, description } =
+    destination;
 
   return (
     <div className="container mx-auto p-4 md:p-8">

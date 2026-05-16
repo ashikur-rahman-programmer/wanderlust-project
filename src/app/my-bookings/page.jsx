@@ -10,13 +10,23 @@ import { FaEye } from "react-icons/fa6";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { BookingCancelAlert } from "@/components/BookingCancelAlert";
+import { authClient } from "@/lib/auth-client";
 
 const MyBookings = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
   const user = session?.user;
-  const res = await fetch(`http://localhost:5000/booking/${user?.id}`);
+
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  const res = await fetch(`http://localhost:5000/booking/${user?.id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const bookings = await res.json();
 
   return (
