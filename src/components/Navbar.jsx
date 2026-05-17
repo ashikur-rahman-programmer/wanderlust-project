@@ -22,59 +22,61 @@ const Navbar = () => {
     });
   };
   return (
-    <nav className="flex justify-between items-center bg-white p-5">
-      <ul className="flex gap-3">
-        <li>
-          <Link href={"/"}>Home</Link>
-        </li>
-        <li>
-          <Link href={"/destinations"}>Destinations</Link>
-        </li>
-        <li>
-          <Link href={"/my-bookings"}>My Bookings</Link>
-        </li>
+    <div className="bg-white w-full sticky top-0 z-10">
+      <nav className="container mx-auto flex justify-between items-center py-3">
+        <ul className="flex gap-3">
+          <li>
+            <Link href={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link href={"/destinations"}>Destinations</Link>
+          </li>
+          <li>
+            <Link href={"/my-bookings"}>My Bookings</Link>
+          </li>
 
-        <li>
-          <Link href={"/add-destination"}>Add Destination</Link>
-        </li>
-      </ul>
+          <li>
+            <Link href={"/add-destination"}>Add Destination</Link>
+          </li>
+        </ul>
 
-      <div>
-        <Image
-          src={"/assets/Wanderlast.png"}
-          height={150}
-          width={150}
-          alt="logo"
-        />
-      </div>
+        <div>
+          <Image
+            src={"/assets/Wanderlast.png"}
+            height={150}
+            width={150}
+            alt="logo"
+          />
+        </div>
 
-      <ul className="flex items-center justify-center gap-3">
-        <li>
-          <Link href={"/profile"}>Profile</Link>
-        </li>
-        {user ? (
-          <>
-            {" "}
-            <li>hey, {user?.name}</li>
-            <li>
-              <Button onClick={handleSignOut} variant="danger">
-                Logout
-              </Button>
-            </li>
-          </>
-        ) : (
-          <>
-            {" "}
-            <li>
-              <Link href={"/login"}>Login</Link>
-            </li>
-            <li>
-              <Link href={"/signup"}>Sign Up</Link>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
+        <ul className="flex items-center justify-center gap-3">
+          <li>
+            <Link href={"/profile"}>Profile</Link>
+          </li>
+          {user ? (
+            <>
+              {" "}
+              <li>hey, {user?.name}</li>
+              <li>
+                <Button onClick={handleSignOut} variant="danger">
+                  Logout
+                </Button>
+              </li>
+            </>
+          ) : (
+            <>
+              {" "}
+              <li>
+                <Link href={"/login"}>Login</Link>
+              </li>
+              <li>
+                <Link href={"/signup"}>Sign Up</Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
+    </div>
   );
 };
 
