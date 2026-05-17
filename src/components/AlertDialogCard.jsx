@@ -6,7 +6,7 @@ import { FiTrash2 } from "react-icons/fi";
 
 export function AlertDialogCard({ destination }) {
   const handleDelete = async (id) => {
-    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    const res = await fetch(`${process.env.SERVER_URL}/destination/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

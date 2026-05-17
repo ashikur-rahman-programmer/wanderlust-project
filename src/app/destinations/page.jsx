@@ -2,7 +2,7 @@ import DestinationCard from "@/components/DestinationCard";
 import { Select, SelectItem } from "@heroui/react";
 
 const DestinationsPage = async () => {
-  const res = await fetch("http://localhost:5000/destination");
+  const res = await fetch(`${process.env.SERVER_URL}/destination`);
   const destinations = await res.json();
 
   return (
